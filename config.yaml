@@ -1,0 +1,21 @@
+data_pipeline:
+  target_variables: ["precipitacao", "temperatura_solo", "humidade_relativa"]
+  interpolation:
+    method: "cubic_spline"
+  scaling:
+    range: [0, 1]
+  window_ingestion:
+    window_size: 10
+    horizon: 3
+
+model_architecture:
+  hidden_dim: 32
+
+training:
+  epochs: 50
+  batch_size: 16
+  learning_rate: 0.005
+  regularization:
+    lambda_value: 0.01
+  early_stopping:
+    patience: 5
